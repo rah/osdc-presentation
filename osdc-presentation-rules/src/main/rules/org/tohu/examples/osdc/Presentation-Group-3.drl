@@ -1,0 +1,119 @@
+/*
+ * Group 3 definitions
+ */
+ 
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+rule "Entry - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("entry");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("The entry point - index.jsp:");	
+	insertLogical(q);
+end
+
+rule "Entry - response"
+dialect "mvel" 
+when
+	Question (id == "entry", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("entry-note");
+	note.setLabel("<img src=\"images/index-jsp.jpg\" height=\"316\" width=\"587\" id=\"index-jsp-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+rule "Rules - Multichoice"
+//dialect "mvel"
+then
+	MultipleChoiceQuestion multi = new MultipleChoiceQuestion();
+	multi.setId("rules");
+	multi.setAnswerType("text");
+	multi.setPreLabel("View the rules:");
+	multi.setPossibleAnswers(new PossibleAnswer[] {
+		new PossibleAnswer("Q0", "Select rule ..."),
+		new PossibleAnswer("Q1", "Questionaire"),
+		new PossibleAnswer("G1", "Group"),
+		new PossibleAnswer("Q2", "Question"),
+		new PossibleAnswer("N1", "Simple Note"),
+		new PossibleAnswer("M1", "Multi-Choice Question")
+	});
+//	multi.setPresentationStyles({"radio"});
+	insertLogical(multi);
+end
+
+rule "Rules - Questionaire"
+dialect "mvel"
+when
+	MultipleChoiceQuestion (id == "rules", textAnswer == "Q1")
+then
+	Note note = new Note();
+	note.setId("rules-questionaire");
+	note.setLabel("<img src=\"images/questionaire.jpg\" id=\"questionaire-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Rules - Group"
+dialect "mvel"
+when
+	MultipleChoiceQuestion (id == "rules", textAnswer == "G1")
+then
+	Note note = new Note();
+	note.setId("rules-group");
+	note.setLabel("<img src=\"images/group.png\" id=\"group-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Rules - Question"
+dialect "mvel"
+when
+	MultipleChoiceQuestion (id == "rules", textAnswer == "Q2")
+then
+	Note note = new Note();
+	note.setId("rules-question");
+	note.setLabel("<img src=\"images/question.png\" id=\"questionaire-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Rules - Note"
+dialect "mvel"
+when
+	MultipleChoiceQuestion (id == "rules", textAnswer == "N1")
+then
+	Note note = new Note();
+	note.setId("rules-note");
+	note.setLabel("<img src=\"images/note.png\" id=\"note-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Rules - Multi-Choice Question"
+dialect "mvel"
+when
+	MultipleChoiceQuestion (id == "rules", textAnswer == "M1")
+then
+	Note note = new Note();
+	note.setId("rules-multi");
+	note.setLabel("<img src=\"images/multi.png\" id=\"multi-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+

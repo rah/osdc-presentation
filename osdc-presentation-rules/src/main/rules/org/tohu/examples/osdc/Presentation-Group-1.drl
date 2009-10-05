@@ -1,0 +1,159 @@
+/*
+ * Group 1 definitions
+ */
+ 
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+rule "Introduction - Slide 1"
+dialect "mvel"
+then
+	Note note = new Note();
+	note.setId("introduction-note");
+	note.setLabel("Click on the checkboxes to get more information.");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+##############################################################################
+# Agenda
+##############################################################################
+
+rule "Agenda - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("agenda");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("Agenda items:");	
+	insertLogical(q);
+end
+
+rule "Agenda - Response"
+dialect "mvel" 
+when
+	Question (id == "agenda", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("agenda-note");
+	note.setLabel("<UL>" + 
+		"<LI>Who's Involved" +
+		"<LI>What does it do" +
+		"<LI>What are the pieces" +
+		"<LI>What is the model" +
+		"<LI>The entry point" +
+		"<LI>The rules" +
+		"<LI>The java script engine" +
+		"<LI>The execution server" +
+		"<LI>More questions" +
+		"</UL");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Agenda - Help"
+dialect "mvel" 
+then
+	Note note = new Note();
+	note.setId("agenda-help");
+	note.setLabel("Ask questions at any point!");
+	note.setPresentationStyles({"tip"});
+	insertLogical(note);	
+end	
+
+##############################################################################
+# Who's Involved
+##############################################################################
+
+rule "Involved - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("involved");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("Who's involved:");	
+	insertLogical(q);
+end
+
+rule "Involved - Reponse"
+dialect "mvel" 
+when
+	Question (id == "involved", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("involved-note");
+	note.setLabel("Collaboration between:" +
+		"<UL>" +
+			"<LI>Solnet New Zealand" +
+			"<LI>JBoss Drools" +
+			"<LI>Suncorp" +
+		"</UL>");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+rule "Involved - Image"
+dialect "mvel"
+when
+	Question (id == "involved", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("involved-image");
+	note.setLabel("images/whos-involved.png");
+	note.setPresentationStyles({"image"});
+	insertLogical(note);	
+end
+
+##############################################################################
+# What does it do
+##############################################################################
+
+rule "Functionality - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("functionality");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"radio"});
+	q.setPreLabel("What is <b>Tohu</b> for?");	
+	insertLogical(q);
+end
+
+rule "Functionality - Reponse"
+dialect "mvel" 
+when
+	Question (id == "functionality", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("functionality-note");
+	note.setLabel("<p>Designed to support question and answer style interactions where the set of questions are dynamic and potentially dependent on the answers received</p>" +
+		"<p>Initial version targeted at interactive web applications, however technology independent and could be used in B2B scenarios, mobile devices, etc</p>" +
+		"<p>Not a UI framework and designed to complement and work within existing frameworks such as Seam/JSF/Spring MV</p>"
+	);
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end
+
+/*
+rule "Functionality - Image"
+dialect "mvel"
+when
+	Question (id == "functionality", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("functionality-image");
+	note.setLabel("images/mars.jpg");
+	note.setPresentationStyles({"image"});
+	insertLogical(note);	
+end
+*/

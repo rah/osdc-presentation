@@ -1,0 +1,34 @@
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+
+rule "How to get it - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("get-it");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("How do I get hold of this stuff?");	
+	insertLogical(q);
+end
+
+rule "Get it - Note"
+dialect "mvel"
+when
+	Question (id == "get-it", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("get-it-note");
+	note.setLabel("How to get it ...");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	

@@ -1,0 +1,96 @@
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+
+rule "Javascript - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("javascript");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("The javascript engine and CSS:");	
+	insertLogical(q);
+end
+
+rule "Javascript - response"
+dialect "mvel" 
+when
+	Question (id == "javascript", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("javascript-note");
+	note.setLabel("<img src=\"images/javascript.png\" height=\"262\" width=\"573\" id=\"javascript-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+rule "REX - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("rex");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("The Execution Server:");	
+	insertLogical(q);
+end
+
+rule "REX config - Question"
+dialect "mvel" 
+when
+	Question (id == "rex", booleanAnswer == true)
+then
+	Question q = new Question();
+	q.setId("rex-config");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("----> configuration:");	
+	insertLogical(q);
+end
+
+rule "JREX config - response"
+dialect "mvel" 
+when
+	Question (id == "rex-config", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("rex-config-note");
+	note.setLabel("<img src=\"images/config.png\" height=\"267\" width=\"577\" id=\"config-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+rule "REX interface - Question"
+dialect "mvel" 
+when
+	Question (id == "rex", booleanAnswer == true)
+then
+	Question q = new Question();
+	q.setId("rex-interface");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("----> interface:");	
+	insertLogical(q);
+end
+
+rule "JREX interface - response"
+dialect "mvel" 
+when
+	Question (id == "rex-interface", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("rex-interface-note");
+	note.setLabel("<img src=\"images/interface.png\"  height=\"260\" width=\"589\" id=\"interface-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	 
+

@@ -1,0 +1,202 @@
+/*
+ * Questionaire and Groups definition
+ */
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+##############################################################################
+# Questionaire definition
+##############################################################################
+
+rule "Presentation Questionaire"
+dialect "mvel"
+then
+	Questionnaire questionnaire = new Questionnaire();
+	questionnaire.setId("DAPresentation");
+	questionnaire.setLabel("Presentation");
+	questionnaire.setItems({"slide1", "slide2", "slide3", "slide4", "slide5"});
+	questionnaire.setActiveItem("slide1");
+	questionnaire.setCompletionAction("extract.pdf");
+	
+	insertLogical(questionnaire);
+end
+
+##############################################################################
+# Group definitions
+##############################################################################
+
+rule "Presentation Slide 1"
+dialect "mvel"
+then
+	Group group = new Group();
+	group.setId("slide1");
+	group.setLabel("Overview");
+	group.setItems({"s1Title", "s1Progress",
+			"introduction-note",
+			"agenda-help", "agenda", "agenda-note",
+			"involved", "involved-note", "involved-image",
+			"functionality", "functionality-note", "functionality-image"});
+	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);
+end
+
+rule "Presentation Slide 2"
+dialect "mvel"
+then
+	Group group = new Group();
+	group.setId("slide2");
+	group.setLabel("Second Slide");
+	group.setItems({"s2Title", "s2Progress",
+			"pieces", "pieces-note",
+			"domain", "domain-note"});
+	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);		
+end
+
+rule "Presentation Slide 3"
+dialect "mvel"
+then
+	Group group = new Group();
+	group.setId("slide3");
+	group.setLabel("Third Slide");
+	group.setItems({"s3Title", "s3Progress",
+		"entry", "entry-note",
+		"rules", "rules-questionaire", "rules-group", 
+		"rules-question", "rules-note", "rules-multi"});
+	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);		
+end
+
+rule "Presentation Slide 4"
+dialect "mvel"
+then
+	Group group = new Group();
+	group.setId("slide4");
+	group.setLabel("Fourth Slide");
+	group.setItems({"s4Title", "s4Progress",
+		"javascript", "javascript-note",
+		"rex", 
+		"rex-config", "rex-config-note",
+		"rex-interface", "rex-interface-note"});
+	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);		
+end
+
+rule "Presentation Slide 5"
+dialect "mvel"
+then
+	Group group = new Group();
+	group.setId("slide5");
+	group.setLabel("Fifth Slide");
+	group.setItems({"s5Title", "s5Progress",
+		"get-it", "get-it-note"});
+	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);		
+end
+
+##############################################################################
+# Active page tile and progress definitions
+##############################################################################
+
+rule "Active - Overview"
+dialect "mvel" 
+when
+	Questionnaire(activeItem == "slide1")
+then
+	Note note = new Note();
+	note.setId("s1Title");
+	note.setLabel("Overview details");
+	note.setPresentationStyles({"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s1Progress");
+	note.setLabel("20%");
+	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end
+
+rule "Active - Second Slide"
+dialect "mvel" 
+when
+	Questionnaire(activeItem == "slide2")
+then
+	Note note = new Note();
+	note.setId("s2Title");
+	note.setLabel("Slide 2 details");
+	note.setPresentationStyles({"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s2Progress");
+	note.setLabel("40%");
+	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end
+
+rule "Active - Third Slide"
+dialect "mvel" 
+when
+	Questionnaire(activeItem == "slide3")
+then
+	Note note = new Note();
+	note.setId("s3Title");
+	note.setLabel("Slide 3 details");
+	note.setPresentationStyles({"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s3Progress");
+	note.setLabel("60%");
+	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end
+
+rule "Active - Fourth Slide"
+dialect "mvel" 
+when
+	Questionnaire(activeItem == "slide4")
+then
+	Note note = new Note();
+	note.setId("s4Title");
+	note.setLabel("Slide 4 details");
+	note.setPresentationStyles({"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s4Progress");
+	note.setLabel("80%");
+	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end
+
+rule "Active - Fifth Slide"
+dialect "mvel" 
+when
+	Questionnaire(activeItem == "slide5")
+then
+	Note note = new Note();
+	note.setId("s5Title");
+	note.setLabel("Slide 5 details");
+	note.setPresentationStyles({"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s5Progress");
+	note.setLabel("100%");
+	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end

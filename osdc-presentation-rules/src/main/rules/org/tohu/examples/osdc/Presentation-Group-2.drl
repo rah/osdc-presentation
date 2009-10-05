@@ -1,0 +1,77 @@
+/*
+ * Group 2 definitions
+ */
+ 
+package org.tohu.examples.osdc;
+
+import java.util.Calendar;
+
+import org.tohu.Group;
+import org.tohu.InvalidAnswer;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.Question;
+import org.tohu.Questionnaire;
+import org.tohu.Note;
+
+##############################################################################
+# What are the pieces
+##############################################################################
+
+rule "Pieces - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("pieces");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("What are major components:");	
+	insertLogical(q);
+end
+
+rule "Pieces - Note"
+dialect "mvel"
+when
+	Question (id == "pieces", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("pieces-note");
+	note.setLabel("<img src=\"images/pieces.jpg\" height=\"221\" width=\"579\" id=\"pieces-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+##############################################################################
+# What is the domain model
+##############################################################################
+
+rule "Domain - Question"
+dialect "mvel" 
+then
+	Question q = new Question();
+	q.setId("domain");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles({"checkbox"});
+	q.setPreLabel("The domain model:");	
+	insertLogical(q);
+end
+
+rule "Domain - Note"
+dialect "mvel"
+when
+	Question (id == "domain", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("domain-note");
+	note.setLabel("The major domain entities are:" +
+		"<UL>" +
+			"<LI>Questionaire" +
+			"<LI>Question" +
+			"<LI>Multi-Choice Question" +
+			"<LI>Notes" +
+			"<LI>Answers" +
+			"<LI>Invalid Answers" +
+		"</UL>" +
+		"<img src=\"images/domain.jpg\" height=\"332\" width=\"584\" id=\"domain-image-1\">");
+	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	

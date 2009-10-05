@@ -1,0 +1,29 @@
+<change-set xmlns='http://drools.org/drools-5.0/change-set' xmlns:xs='http://www.w3.org/2001/XMLSchema-instance' xs:schemaLocation='http://drools.org/drools-5.0/change-set drools-change-set-5.0.xsd'>
+  <add>
+    <resource type="DRL" source="classpath:org/tohu/Active.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/Changes.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/Item.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/Queries.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/Question.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/ReadOnly.drl"/>
+
+<!--    
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Group-1.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Group-2.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Group-3.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Group-4.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Group-5.drl"/>
+    <resource type="DRL" source="classpath:org/tohu/examples/osdc/Presentation-Validation.drl"/>
+-->     
+  
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-1.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-2.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-3.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-4.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-5.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Validation.drl"/>   
+
+  </add>
+</change-set>
