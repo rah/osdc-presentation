@@ -8,8 +8,9 @@ import java.util.Calendar;
 
 import org.tohu.Group;
 import org.tohu.InvalidAnswer;
-import org.tohu.MultipleChoiceQuestion;
 import org.tohu.Question;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
 import org.tohu.Questionnaire;
 import org.tohu.Note;
 
@@ -22,6 +23,46 @@ then
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end	
+
+##############################################################################
+# Presenter
+##############################################################################
+
+rule "Presenters name"
+dialect "mvel"
+then
+	Question q = new Question();
+	q.setId("presenters-name");
+	q.setAnswerType("text");
+	q.setPreLabel("Who is the presenter?");
+	insertLogical(q);
+end
+
+rule "Invalid presenters name"
+when
+	Question( id == "presenters-name", answered == true, textAnswer != "Ross")
+then
+	InvalidAnswer ia = new InvalidAnswer();
+	ia.setQuestionId("presenters-name");
+	ia.setReason("Sorry, you need to respond with Ross");
+	insertLogical(ia);
+end
+
+rule "Presenters Name Response"
+when
+	$q : Question ( id == "presenters-name", answered == true, textAnswer == "Ross" )
+then
+	MultipleChoiceQuestion multi = new MultipleChoiceQuestion();
+	multi.setId("presenters-response-question");
+	multi.setAnswerType("text");
+	multi.setPreLabel("Select an option " + $q.getTextAnswer() + ":");
+	multi.setPossibleAnswers(new PossibleAnswer[] {
+		new PossibleAnswer("A1", "Select option ..."),
+		new PossibleAnswer("A2", "About Ross"),
+		new PossibleAnswer("A3", "Show me the agenda!")
+	});
+	insertLogical(multi);	
+end
 
 ##############################################################################
 # Agenda

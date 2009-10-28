@@ -40,7 +40,8 @@ then
 	group.setId("slide1");
 	group.setLabel("Overview");
 	group.setItems({"s1Title", "s1Progress",
-			"introduction-note",
+			"introduction-note", 
+			"presenters-name", "presenters-response-question",
 			"agenda-help", "agenda", "agenda-note",
 			"involved", "involved-note", "involved-image",
 			"functionality", "functionality-note", "functionality-image"});

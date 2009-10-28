@@ -109,13 +109,15 @@
     <dependency>
       <groupId>org.tohu</groupId>
       <artifactId>tohu-core</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.0</version>
+<!--      <version>1.0.1-SNAPSHOT</version>-->
     </dependency>
 
     <dependency>
       <groupId>org.tohu</groupId>
       <artifactId>tohu-xml</artifactId>
-      <version>1.0.1-SNAPSHOT</version>
+      <version>1.0.0</version>
+<!--      <version>1.0.1-SNAPSHOT</version>-->
     </dependency>
 
     <dependency>
