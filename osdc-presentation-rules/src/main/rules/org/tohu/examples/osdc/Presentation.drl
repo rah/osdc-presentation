@@ -41,7 +41,7 @@ then
 	group.setLabel("Overview");
 	group.setItems({"s1Title", "s1Progress",
 			"introduction-note", 
-			"presenters-name", "presenters-response-question",
+			"presenters-name", "presenters-response-question", "presenters-name-unknown", "presenters-name-known",
 			"agenda-help", "agenda", "agenda-note",
 			"involved", "involved-note", "involved-image",
 			"functionality", "functionality-note", "functionality-image"});

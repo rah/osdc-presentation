@@ -14,6 +14,10 @@ import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
 import org.tohu.Questionnaire;
 import org.tohu.Note;
 
+function boolean notContainedIn(String value, String compare) {
+	return !compare.contains(value);
+}
+
 rule "Introduction - Slide 1"
 dialect "mvel"
 then
@@ -28,8 +32,7 @@ end
 # Presenter
 ##############################################################################
 
-rule "Presenters name"
-dialect "mvel"
+rule "Presenter name question"
 then
 	Question q = new Question();
 	q.setId("presenters-name");
@@ -38,19 +41,19 @@ then
 	insertLogical(q);
 end
 
-rule "Invalid presenters name"
+rule "Presenter name invalid"
 when
-	Question( id == "presenters-name", answered == true, textAnswer != "Ross")
+	Question( id == "presenters-name", answered == true, textAnswer not matches "^R[A-Za-z]*")
 then
 	InvalidAnswer ia = new InvalidAnswer();
 	ia.setQuestionId("presenters-name");
-	ia.setReason("Sorry, you need to respond with Ross");
+	ia.setReason("Sorry, you need to respond with a name beginning with R");
 	insertLogical(ia);
 end
 
-rule "Presenters Name Response"
+rule "Presenter name question response"
 when
-	$q : Question ( id == "presenters-name", answered == true, textAnswer == "Ross" )
+	$q : Question ( id == "presenters-name", answered == true, textAnswer matches "^R[A-Za-z]*" )
 then
 	MultipleChoiceQuestion multi = new MultipleChoiceQuestion();
 	multi.setId("presenters-response-question");
@@ -58,10 +61,44 @@ then
 	multi.setPreLabel("Select an option " + $q.getTextAnswer() + ":");
 	multi.setPossibleAnswers(new PossibleAnswer[] {
 		new PossibleAnswer("A1", "Select option ..."),
-		new PossibleAnswer("A2", "About Ross"),
+		new PossibleAnswer("A2", "About the presenter"),
 		new PossibleAnswer("A3", "Show me the agenda!")
 	});
 	insertLogical(multi);	
+end
+
+rule "Presenter check reponse name in prelabel still matches"
+when
+	$q : Question ( id == "presenters-name", answered == true, textAnswer matches "^R[A-Za-z]*" )
+	$m : MultipleChoiceQuestion ( id == "presenters-response-question" ) 
+	eval ( notContainedIn($q.getTextAnswer(), $m.getPreLabel()) )		
+then
+	$m.setPreLabel("Select an option " + $q.getTextAnswer() + ":");
+	update ($m);
+end
+
+rule "Presenter name unknown"
+when
+	$q : Question( id == "presenters-name", answered == true, textAnswer != "Ross" )
+	MultipleChoiceQuestion( id == "presenters-response-question", answered == true, textAnswer == "A2" )
+then
+	Note note = new Note();
+	note.setId("presenters-name-unknown");
+	note.setLabel("I don't have any information about " + $q.getTextAnswer() + " try Ross");
+	note.setPresentationStyles(new String [] {"expandedTip"});
+	insertLogical(note);
+end
+
+rule "Presenter name known"
+when
+	$q : Question( id == "presenters-name", answered == true, textAnswer == "Ross" )
+	MultipleChoiceQuestion( id == "presenters-response-question", answered == true, textAnswer == "A2" )
+then
+	Note note = new Note();
+	note.setId("presenters-name-known");
+	note.setLabel("Yeh, I know this guy " + $q.getTextAnswer() + " don't trust him - he's an architect");
+	note.setPresentationStyles(new String [] {"expandedTip"});
+	insertLogical(note);
 end
 
 ##############################################################################
