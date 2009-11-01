@@ -1,0 +1,29 @@
+/* table styles */
+
+.table {
+ 	font-size: 0.7em;
+ 	margin: 0;
+}
+.table .preLabel,
+.table .answer {
+ 	display: none;
+}
+.table .row {
+ 	border-bottom: 1px solid;
+ 	margin: 0;
+}
+.table .row.hover {
+	background-color: #DDD;
+}
+.table .row.selected {
+ 	background-color: yellow;
+}
+.table .header {
+ 	font-weight: bold;
+}
+.table .header,
+.table .cell {
+ 	display: inline-block;
+ 	width : 25%;
+ 	vertical-align:middle;
+}

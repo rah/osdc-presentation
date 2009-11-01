@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="css/typography.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="css/layout.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/table.css">
 <script type="text/javascript" src="script/extra.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
@@ -22,9 +23,7 @@
    <img src="images/tohu-banner_r2v1.png" width="930" title="Presentation"  />
   </div>
   <div id="wrapper">
-
         <div id="bodyContent" class="innerPadding"></div>
-
 		<form>
 			<input type="button" value="Reset" onclick="resetDrools()" />
 		</form>
@@ -40,8 +39,7 @@
           	<div id="progressbar">
             	<p>&nbsp;</p>
           	</div>
-        </div>
-      
+        </div>      
       <div id="helphint">
         <p>Click the help buttons for assistance with a question</p>
       </div>

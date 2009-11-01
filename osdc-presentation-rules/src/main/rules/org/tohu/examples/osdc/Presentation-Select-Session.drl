@@ -1,0 +1,109 @@
+package org.tohu.examples.osdc;
+
+import org.tohu.TohuObject;
+import org.tohu.Item;
+import org.tohu.Questionnaire;
+import org.tohu.MultipleChoiceQuestion;
+import org.tohu.MultipleChoiceQuestion.PossibleAnswer;
+import org.tohu.Question;
+import org.tohu.Group;
+import org.tohu.Note;
+
+
+/************************************************************************
+		Now for something tricky!
+		A demonstration of extensions to the core Tohu
+************************************************************************/
+
+rule "Note - Tricky extensions intro"
+then
+	Note note = new Note();
+	note.setId("session-intro-note");
+	note.setLabel("Now for something slightly different. The use of javascript to extend Tohu and render a MultipleChoiceQuestion in a different way");
+	note.setPresentationStyles(new String [] {"expandedTip"});
+	insertLogical(note);
+end
+
+rule "Question - Which day"
+then
+	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
+	question.setId("select-session-day");
+	question.setPreLabel("Which sessions?");
+	question.setAnswerType(Question.TYPE_TEXT);
+	question.setPossibleAnswers(new PossibleAnswer[] {
+		new PossibleAnswer("Day 0", "chose your day ..."),
+	    new PossibleAnswer("Day 1", "Day 1"),
+	    new PossibleAnswer("Day 2", "Day 2"),
+	    new PossibleAnswer("Day 3", "Day 3")
+	});
+	insertLogical(question);
+end
+
+rule "Question - Sessions for Day 1"
+dialect "mvel" 
+when
+	MultipleChoiceQuestion( id == "select-session-day", answered == true, textAnswer == "Day 1" )
+then
+	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
+	question.setId("select-session-day-1");
+	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setAnswerType(Question.TYPE_TEXT);
+	question.setPresentationStyles({"left", "table"});
+	question.setPossibleAnswers({
+	        new PossibleAnswer("0", "xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "Padre - The Perl IDE for normal people -Adam Kennedy|GRAPH Engine for MySQL, MariaDB and Drizzle -Arjen Lentz|Tkinter doesn't suck, honest -Richard Jones"),
+	        new PossibleAnswer("2", "Awesome Things You've Missed in Perl -Paul Fenwick|State of Play: PHP in 2009 -Akash Mehta|Making Django Awesomer -Richard Jones"),
+	        new PossibleAnswer("3", "-|-|-"),
+	        new PossibleAnswer("4", "Perl 6 Now -Scott Penrose|-|Grok or how Zope3 reinvented itself"),
+	        new PossibleAnswer("5", "-|-|Natural Language Generation for Weather Forecasting, Update")
+	        new PossibleAnswer("6", "-|-|What's new in Python 3 - Anthony Baxter")
+	        new PossibleAnswer("7", "-|Application level replication in Joomla! - Sam Moffatt|-")
+	        new PossibleAnswer("8", "-|Joopal and Drumla: Not your usual mashup - Sam Moffatt|Introducing Django - Calling all Web Developers with Deadlines - Akash Mehta")
+	});
+	insertLogical(question);
+end
+
+rule "Question - Sessions for Day 2"
+dialect "mvel" 
+when
+	MultipleChoiceQuestion( id == "select-session-day", answered == true, textAnswer == "Day 2" )
+then
+	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
+	question.setId("select-session-day-2");
+	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setAnswerType(Question.TYPE_TEXT);
+	question.setPresentationStyles({"left", "table"});
+	question.setPossibleAnswers({
+	        new PossibleAnswer("0", "xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "Taking Groovy and Grails Further into the Enterprise -Bob Brown|How to get Rails web applications accepted in industry -Harley Mackenzie|Intelligent Web Questionaires - A Rules Based Approach -Ross Hall"),
+	        new PossibleAnswer("2", "Using Groovy for Testing -Paul King|Towards Complete Code Coverage. -Clinton Roy|ExtJS + OpenLayers mapping -Scott Penrose"),
+	        new PossibleAnswer("3", "-|The Bitten Continuous Integration Service -Clinton Roy|Open Source Web Apps in Azure -Jorke Odolphi"),
+	        new PossibleAnswer("4", "Writing Domain Specific Languages (DSLs) using Groovy -Paul King|Not another damn password! It's the 21st Century after all -Daniel Black|Desktop Applications for the Web -Ben Balbo"),
+	        new PossibleAnswer("5", "SELinux for Programmers -Paul Wayper|-|Relax! A Failure is NOT an Emergency. -Arjen Lentz"),
+	        new PossibleAnswer("6", "On Scala (or: Static Typing Doesn't Have To Suck) -Thomas Lee|Complex Event Processing (real time even stream processing) for fun and profit -Michael Neale|Business, Law, Open Source -Brendan Scott"),
+	        new PossibleAnswer("7", "TsPyC: Making compiler semantics scriptable -Joshua Bartlett|GIT me up -Nigel Rausch|oFono - Open Source Telephony -Denis Kenzior"),
+	        new PossibleAnswer("8", "-|Agile Developer Practices for Dynamic Languages -Paul King|There's something on my ARM: Chromium and the Beagleboard -Joel Stanley")
+	});
+	insertLogical(question);
+end
+
+rule "Question - Sessions for Day 3"
+dialect "mvel" 
+when
+	MultipleChoiceQuestion( id == "select-session-day", answered == true, textAnswer == "Day 3" )
+then
+	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
+	question.setId("select-session-day-3");
+	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setAnswerType(Question.TYPE_TEXT);
+	question.setPresentationStyles({"left", "table"});
+	question.setPossibleAnswers({
+	        new PossibleAnswer("0", "xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "Cultivating Codeless Contributors -Melissa Draper|Experiences from Agile Projects Great & Small -Craig Smith|Captain Abdul's Guide to PL/PirateSQL -Andrew McMillan"),
+	        new PossibleAnswer("2", "Building an Open Source community -Ryan Cross|Adding code coverage metrics and unit tests to a mature application -Tennessee Leeuwenburg|Change Bad! - Change in database schemas and source code -Andy Todd"),
+	        new PossibleAnswer("3", "Remote Controlled Volunteers -Karen Pauley|How The Internet Really Works -Julien Goodwin|Multi-Master MySQL, effective why and how -Arjen Lentz"),
+	        new PossibleAnswer("4", "Maintaining a community based music website with open source software -Andrew Goodwin|Challenges for multi-lingual systems with OSS tools -David Jorm|Writeable CTEs: The Next Big Thing -David Fetter"),
+	        new PossibleAnswer("5", "Just Get the Job Done! Serving the Community One Argument at a Time. -Jacinta Richardson|-|Data Migration In An Agile Open Source World -Craig Smith")
+	});
+	insertLogical(question);
+end

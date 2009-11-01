@@ -21,8 +21,8 @@ dialect "mvel"
 then
 	Questionnaire questionnaire = new Questionnaire();
 	questionnaire.setId("DAPresentation");
-	questionnaire.setLabel("Presentation");
-	questionnaire.setItems({"slide1", "slide2", "slide3", "slide4", "slide5"});
+	questionnaire.setLabel("OSDC Presentation");
+	questionnaire.setItems({"slide1", "select", "slide2", "slide3", "slide4", "slide5"});
 	questionnaire.setActiveItem("slide1");
 	questionnaire.setCompletionAction("extract.pdf");
 	
@@ -46,6 +46,25 @@ then
 			"involved", "involved-note", "involved-image",
 			"functionality", "functionality-note", "functionality-image"});
 	group.setPresentationStyles({"section"});
+	
+	insertLogical(group);
+end
+
+rule "Presentation - Select Session"
+then
+	Group group = new Group();
+	group.setId("select");
+	group.setLabel("Select Session");
+	group.setItems(new String [] 
+	{
+		"s-selection-title", "s-selection-progress",
+		"session-intro-note",
+		"select-session-day",
+		"select-session-day-1",
+		"select-session-day-2",
+		"select-session-day-3"
+	});
+	group.setPresentationStyles(new String [] {"section"});
 	
 	insertLogical(group);
 end
@@ -119,7 +138,7 @@ when
 then
 	Note note = new Note();
 	note.setId("s1Title");
-	note.setLabel("Overview details");
+	note.setLabel("Introduction");
 	note.setPresentationStyles({"title"});
 	insertLogical(note);
 
@@ -127,6 +146,23 @@ then
 	note.setId("s1Progress");
 	note.setLabel("20%");
 	note.setPresentationStyles({"progress"});
+	insertLogical(note);
+end
+
+rule "Active - Select Presentation Session"
+when
+	Questionnaire(activeItem == "select")
+then
+	Note note = new Note();
+	note.setId("s-selection-title");
+	note.setLabel("Select Session");
+	note.setPresentationStyles(new String []{"title"});
+	insertLogical(note);
+
+	note = new Note();
+	note.setId("s-selection-progress");
+	note.setLabel("40%");
+	note.setPresentationStyles(new String []{"progress"});
 	insertLogical(note);
 end
 
@@ -143,7 +179,7 @@ then
 
 	note = new Note();
 	note.setId("s2Progress");
-	note.setLabel("40%");
+	note.setLabel("60%");
 	note.setPresentationStyles({"progress"});
 	insertLogical(note);
 end
@@ -161,7 +197,7 @@ then
 
 	note = new Note();
 	note.setId("s3Progress");
-	note.setLabel("60%");
+	note.setLabel("80%");
 	note.setPresentationStyles({"progress"});
 	insertLogical(note);
 end
@@ -179,7 +215,7 @@ then
 
 	note = new Note();
 	note.setId("s4Progress");
-	note.setLabel("80%");
+	note.setLabel("100%");
 	note.setPresentationStyles({"progress"});
 	insertLogical(note);
 end

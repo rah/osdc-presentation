@@ -23,6 +23,7 @@
     <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-3.drl"/>
     <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-4.drl"/>
     <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Group-5.drl"/>
+    <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Select-Session.drl"/>   
     <resource type="DRL" source="file:../osdc-presentation-rules/src/main/rules/org/tohu/examples/osdc/Presentation-Validation.drl"/>   
 
   </add>

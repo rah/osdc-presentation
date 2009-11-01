@@ -23,7 +23,12 @@ dialect "mvel"
 then
 	Note note = new Note();
 	note.setId("introduction-note");
-	note.setLabel("Click on the checkboxes to get more information.");
+	note.setLabel("An introduction to Tohu, a rules based approach to dynamic questionnaires. " +
+			"This application is completely driven by rules and no code." +
+			"<p>Well - that is a little bit of a lie, as the rules wrap java code. " +
+			"So you can have the best of both worlds, a rules based declaritive approach" +
+			" and the power of java to do whatever you want! </p>" +
+			"<p>Combining this with JavaScript for rendering the UI, the world is your ...</p>");
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end	
