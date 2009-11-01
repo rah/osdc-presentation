@@ -19,7 +19,8 @@ rule "Note - Tricky extensions intro"
 then
 	Note note = new Note();
 	note.setId("session-intro-note");
-	note.setLabel("Now for something slightly different. The use of javascript to extend Tohu and render a MultipleChoiceQuestion in a different way");
+	note.setLabel("Now for something slightly different. This demonstrates the use of javascript" +
+		" to extend Tohu and render a MultipleChoiceQuestion in a different way");
 	note.setPresentationStyles(new String [] {"expandedTip"});
 	insertLogical(note);
 end
@@ -28,7 +29,7 @@ rule "Question - Which day"
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day");
-	question.setPreLabel("Which sessions?");
+	question.setPreLabel("Which OSDC sessions?");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPossibleAnswers(new PossibleAnswer[] {
 		new PossibleAnswer("Day 0", "chose your day ..."),
@@ -51,7 +52,7 @@ then
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({
 	        new PossibleAnswer("0", "xxx|yyy|zzz"),
-	        new PossibleAnswer("1", "Padre - The Perl IDE for normal people -Adam Kennedy|GRAPH Engine for MySQL, MariaDB and Drizzle -Arjen Lentz|Tkinter doesn't suck, honest -Richard Jones"),
+	        new PossibleAnswer("1", "Padre - The Perl IDE for normal people -<a href=\"http://2009.osdc.com.au/adam-kennedy\">Adam Kennedy</a>|GRAPH Engine for MySQL, MariaDB and Drizzle -<a href=\"http://2009.osdc.com.au/arjen-lentz\">Arjen Lentz</a>|Tkinter doesn't suck, honest -<a href=\"http://2009.osdc.com.au/richard-jones\">Richard Jones</a>"),
 	        new PossibleAnswer("2", "Awesome Things You've Missed in Perl -Paul Fenwick|State of Play: PHP in 2009 -Akash Mehta|Making Django Awesomer -Richard Jones"),
 	        new PossibleAnswer("3", "-|-|-"),
 	        new PossibleAnswer("4", "Perl 6 Now -Scott Penrose|-|Grok or how Zope3 reinvented itself"),

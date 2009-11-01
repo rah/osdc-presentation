@@ -106,6 +106,15 @@ then
 	insertLogical(note);
 end
 
+rule "Set agenda question to display"
+when
+	MultipleChoiceQuestion ( id == "presenters-response-question", answered == true, textAnswer ==  "A3")
+	$question : Question ( id == "agenda", answered == false || booleanAnswer == false )
+then
+	$question.setBooleanAnswer(true);
+	update($question);
+end
+
 ##############################################################################
 # Agenda
 ##############################################################################
