@@ -28,7 +28,28 @@ when
 then
 	Note note = new Note();
 	note.setId("get-it-note");
-	note.setLabel("How to get it ...");
+	note.setLabel("How to get it ... <a href=\"http://www.jboss.org/tohu\">Tohu JBoss Site</a>");
 	note.setPresentationStyles({"expandedTip"});
+	insertLogical(note);	
+end	
+
+rule "Whats happening now? - Question"
+then
+	Question q = new Question();
+	q.setId("whats-new");
+	q.setAnswerType("boolean");
+	q.setPresentationStyles(new String []{"checkbox"});
+	q.setPreLabel("What\'s happening now?");	
+	insertLogical(q);
+end
+
+rule "Whats New - Note"
+when
+	Question (id == "whats-new", booleanAnswer == true)
+then
+	Note note = new Note();
+	note.setId("whats-new-note");
+	note.setLabel("Stuff about whats new");
+	note.setPresentationStyles(new String []{"expandedTip"});
 	insertLogical(note);	
 end	

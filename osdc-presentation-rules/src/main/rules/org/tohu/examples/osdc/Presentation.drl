@@ -120,8 +120,12 @@ then
 	Group group = new Group();
 	group.setId("slide5");
 	group.setLabel("Fifth Slide");
-	group.setItems({"s5Title", "s5Progress",
-		"get-it", "get-it-note"});
+	group.setItems(
+	{
+		"s5Title", "s5Progress",
+		"get-it", "get-it-note",
+		"whats-new", "whats-new-note"
+	});
 	group.setPresentationStyles({"section"});
 	
 	insertLogical(group);		
