@@ -28,7 +28,8 @@ when
 then
 	Note note = new Note();
 	note.setId("get-it-note");
-	note.setLabel("How to get it ... <a href=\"http://www.jboss.org/tohu\">Tohu JBoss Site</a>");
+	note.setLabel("<p>How to get it ... <a href=\"http://www.jboss.org/tohu\">Tohu JBoss Site</a></p>" + 
+		"<p>This presentation can be downloaded from <a href=\"http://github.com/rah\">My Github Repos</a></p>");
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end	
@@ -49,7 +50,12 @@ when
 then
 	Note note = new Note();
 	note.setId("whats-new-note");
-	note.setLabel("Stuff about whats new");
+	note.setLabel("Stuff about future things:" +
+		"<UL>" +
+			"<LI>Spreadsheet definitions for business users" +
+			"<LI>Integration with Drools Guvnor" +
+			"<LI>Other clients ..." +
+		"</UL>");
 	note.setPresentationStyles(new String []{"expandedTip"});
 	insertLogical(note);	
 end	

@@ -66,7 +66,7 @@ function postProcessTable(obj) {
 	       for (var i = 0; i < headers.length; i++) {
 	           html += "<span class=\"header span-" + columnWidth + "\">" + headers[i] + "</span>";
 	       }
-	       html += "<span class=\"header span-1\">select</span>";
+//	       html += "<span class=\"header span-1\">select</span>";
 	       html += "</div>";
 	       var possibleAnswers = obj.possibleAnswers;
 	       // note: starts at 1 to skip the null value
@@ -77,7 +77,7 @@ function postProcessTable(obj) {
 	           for (var j = 0; j < values.length; j++) {
 	               html += "<span class=\"cell span-" + columnWidth + "\">" + values[j].replace(/.000/g, ",000") + "</span>";
 	           }
-	           html += "<span class=\"cell span-1\"><input type=\"checkbox\" value=\"" + keyValue[0] + "\"/></span>";
+//	           html += "<span class=\"cell span-1\"><input type=\"checkbox\" value=\"" + keyValue[0] + "\"/></span>";
 	           html += "</div>"
 	       }
 	       html += "</div>";

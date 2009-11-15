@@ -21,9 +21,11 @@
 .table .header {
  	font-weight: bold;
 }
+
+/* Note the width is hard coded here for the actual number of rows */
 .table .header,
 .table .cell {
  	display: inline-block;
- 	width : 25%;
+ 	width : 33%;
  	vertical-align:middle;
 }

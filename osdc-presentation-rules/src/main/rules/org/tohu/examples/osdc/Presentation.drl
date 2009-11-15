@@ -41,9 +41,9 @@ then
 	group.setLabel("Overview");
 	group.setItems({"s1Title", "s1Progress",
 			"introduction-note", 
+			"agenda-help", "agenda", "agenda-note", 
 			"presenters-name", "presenters-response-question", "presenters-name-unknown", "presenters-name-known",
-			"agenda-help", "agenda", "agenda-note",
-			"involved", "involved-note", "involved-image",
+			"involved", "involved-note",
 			"functionality", "functionality-note", "functionality-image"});
 	group.setPresentationStyles({"section"});
 	

@@ -20,7 +20,7 @@ then
 	Note note = new Note();
 	note.setId("session-intro-note");
 	note.setLabel("Now for something slightly different. This demonstrates the use of javascript" +
-		" to extend Tohu and render a MultipleChoiceQuestion in a different way");
+		" to extend Tohu and render a MultipleChoiceQuestion in a different way.");
 	note.setPresentationStyles(new String [] {"expandedTip"});
 	insertLogical(note);
 end
@@ -47,7 +47,8 @@ when
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day-1");
-	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+//	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setPreLabel("Session 1|Session 2|Session 3");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({
@@ -71,7 +72,8 @@ when
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day-2");
-	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+//	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setPreLabel("Session 1|Session 2|Session 3");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({

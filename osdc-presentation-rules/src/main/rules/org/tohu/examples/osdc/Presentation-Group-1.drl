@@ -23,12 +23,8 @@ dialect "mvel"
 then
 	Note note = new Note();
 	note.setId("introduction-note");
-	note.setLabel("An introduction to Tohu, a rules based approach to dynamic questionnaires. " +
-			"This application is completely driven by rules and no code." +
-			"<p>Well - that is a little bit of a lie, as the rules wrap java code. " +
-			"So you can have the best of both worlds, a rules based declaritive approach" +
-			" and the power of java to do whatever you want! </p>" +
-			"<p>Combining this with JavaScript for rendering the UI, the world is your ...</p>");
+	note.setLabel("<p style=\"text-align: center; font: 14pt/16pt fantasy, cursive, Serif;\"> An introduction to Tohu</p>" +
+		"<p style=\"text-align: center; font: 14pt/16pt fantasy, cursive, Serif;\">A rules based approach to dynamic questionnaires</p>");
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end	
@@ -157,7 +153,7 @@ dialect "mvel"
 then
 	Note note = new Note();
 	note.setId("agenda-help");
-	note.setLabel("Ask questions at any point!");
+	note.setLabel("Click on the check box to get the agenda and please ask questions at any point!");
 	note.setPresentationStyles({"tip"});
 	insertLogical(note);	
 end	
@@ -184,25 +180,17 @@ when
 then
 	Note note = new Note();
 	note.setId("involved-note");
-	note.setLabel("Collaboration between:" +
-		"<UL>" +
-			"<LI>Solnet New Zealand" +
-			"<LI>JBoss Drools" +
-			"<LI>Suncorp" +
-		"</UL>");
+	note.setLabel(
+		"<div>" +
+			"Collaboration between:" +
+			"<img src=\"images/whos-involved.png\" id=\"involved-image_image\" align=\"right\"/>" +				
+				"<UL>" +
+					"<LI>Solnet New Zealand" +
+					"<LI>JBoss Drools" +
+					"<LI>Suncorp" +
+				"</UL>" +
+		"</div>");
 	note.setPresentationStyles({"expandedTip"});
-	insertLogical(note);	
-end
-
-rule "Involved - Image"
-dialect "mvel"
-when
-	Question (id == "involved", booleanAnswer == true)
-then
-	Note note = new Note();
-	note.setId("involved-image");
-	note.setLabel("images/whos-involved.png");
-	note.setPresentationStyles({"image"});
 	insertLogical(note);	
 end
 
@@ -228,24 +216,13 @@ when
 then
 	Note note = new Note();
 	note.setId("functionality-note");
-	note.setLabel("<p>Designed to support question and answer style interactions where the set of questions are dynamic and potentially dependent on the answers received</p>" +
+	note.setLabel("<p>Designed to support question and answer style interactions where the set of questions are dynamic and potentially dependent on the answers received.</p>" +
+		"<p>This application is driven by rules which provides a declaritive approach " +
+		"to defining interactive questionnaire style applications with a domain specific model." + 
+		"<p>JavaScript within the browser interprets this model and renders the UI.</p>" +
 		"<p>Initial version targeted at interactive web applications, however technology independent and could be used in B2B scenarios, mobile devices, etc</p>" +
-		"<p>Not a UI framework and designed to complement and work within existing frameworks such as Seam/JSF/Spring MV</p>"
+		"<p>Tohu is not a UI framework and is designed to complement and work within existing frameworks such as Seam/JSF/Spring MV</p>"
 	);
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end
-
-/*
-rule "Functionality - Image"
-dialect "mvel"
-when
-	Question (id == "functionality", booleanAnswer == true)
-then
-	Note note = new Note();
-	note.setId("functionality-image");
-	note.setLabel("images/mars.jpg");
-	note.setPresentationStyles({"image"});
-	insertLogical(note);	
-end
-*/
