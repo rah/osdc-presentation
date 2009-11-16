@@ -47,20 +47,21 @@ when
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day-1");
-//	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
-	question.setPreLabel("Session 1|Session 2|Session 3");
+	question.setPreLabel("Time|Session 1|Session 2|Session 3");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({
-	        new PossibleAnswer("0", "xxx|yyy|zzz"),
-	        new PossibleAnswer("1", "Padre - The Perl IDE for normal people -<a href=\"http://2009.osdc.com.au/adam-kennedy\">Adam Kennedy</a>|GRAPH Engine for MySQL, MariaDB and Drizzle -<a href=\"http://2009.osdc.com.au/arjen-lentz\">Arjen Lentz</a>|Tkinter doesn't suck, honest -<a href=\"http://2009.osdc.com.au/richard-jones\">Richard Jones</a>"),
-	        new PossibleAnswer("2", "Awesome Things You've Missed in Perl -Paul Fenwick|State of Play: PHP in 2009 -Akash Mehta|Making Django Awesomer -Richard Jones"),
-	        new PossibleAnswer("3", "-|-|-"),
-	        new PossibleAnswer("4", "Perl 6 Now -Scott Penrose|-|Grok or how Zope3 reinvented itself"),
-	        new PossibleAnswer("5", "-|-|Natural Language Generation for Weather Forecasting, Update")
-	        new PossibleAnswer("6", "-|-|What's new in Python 3 - Anthony Baxter")
-	        new PossibleAnswer("7", "-|Application level replication in Joomla! - Sam Moffatt|-")
-	        new PossibleAnswer("8", "-|Joopal and Drumla: Not your usual mashup - Sam Moffatt|Introducing Django - Calling all Web Developers with Deadlines - Akash Mehta")
+	        new PossibleAnswer("0", "aaa|xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "9:00 - 10:00|Keynote and opening| | "),
+	        new PossibleAnswer("2", "10:00 - 10:30|GRAPH Engine for MySQL, MariaDB and Drizzle (30 mins) -Arjen Lentz|Tkinter doesn't suck, honest (30 mins) -Richard Jones|Joopal and Drumla: Not your usual mashup (30 mins) -Sam Moffatt"),
+	        new PossibleAnswer("3", "10:30 - 11:00|Morning tea| | "),
+	        new PossibleAnswer("4", "11:00 - 12:00|Awesome Things You've Missed in Perl (60 mins) -Paul Fenwick|Introducing Django - Calling all Web Developers with Deadlines (60 mins) -Akash Mehta|What's new in Python 3 (60 mins) -Anthony Baxter"),
+	        new PossibleAnswer("5", "12:00 - 12:30|Perl 6 Now (30 mins) - Scott Penrose|Making Django Awesomer (30 mins) -Richard Jones|Grok or how Zope3 reinvented itself (30 mins) -Roman Joost"),
+	        new PossibleAnswer("6", "12:30 - 1:30|lunch| | "),
+	        new PossibleAnswer("7", "1:30 - 2:30|Padre - The Perl IDE for normal people (60 mins) -Adam Kennedy|Agile Developer Practices for Dynamic Languages (60 mins) -Paul King|oFono - Open Source Telephony (60 mins) -Denis Kenzior"),
+	        new PossibleAnswer("8", "2:30 - 3:00|Natural Language Generation for Weather Forecasting, Update (30 mins) -Tennessee Leeuwenburg|State of Play: PHP in 2009 (30 mins) -Akash Mehta|Application level replication in Joomla! (30 mins) -Sam Moffatt"),
+	        new PossibleAnswer("9", "3:00 - 3:30|afternoon tea| | "),
+	        new PossibleAnswer("10", "3:30 - 5:00|Lightning talks| | ")
 	});
 	insertLogical(question);
 end
@@ -72,20 +73,24 @@ when
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day-2");
-//	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
-	question.setPreLabel("Session 1|Session 2|Session 3");
+	question.setPreLabel("Time|Session 1|Session 2|Session 3");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({
-	        new PossibleAnswer("0", "xxx|yyy|zzz"),
-	        new PossibleAnswer("1", "Taking Groovy and Grails Further into the Enterprise -Bob Brown|How to get Rails web applications accepted in industry -Harley Mackenzie|Intelligent Web Questionaires - A Rules Based Approach -Ross Hall"),
-	        new PossibleAnswer("2", "Using Groovy for Testing -Paul King|Towards Complete Code Coverage. -Clinton Roy|ExtJS + OpenLayers mapping -Scott Penrose"),
-	        new PossibleAnswer("3", "-|The Bitten Continuous Integration Service -Clinton Roy|Open Source Web Apps in Azure -Jorke Odolphi"),
-	        new PossibleAnswer("4", "Writing Domain Specific Languages (DSLs) using Groovy -Paul King|Not another damn password! It's the 21st Century after all -Daniel Black|Desktop Applications for the Web -Ben Balbo"),
-	        new PossibleAnswer("5", "SELinux for Programmers -Paul Wayper|-|Relax! A Failure is NOT an Emergency. -Arjen Lentz"),
-	        new PossibleAnswer("6", "On Scala (or: Static Typing Doesn't Have To Suck) -Thomas Lee|Complex Event Processing (real time even stream processing) for fun and profit -Michael Neale|Business, Law, Open Source -Brendan Scott"),
-	        new PossibleAnswer("7", "TsPyC: Making compiler semantics scriptable -Joshua Bartlett|GIT me up -Nigel Rausch|oFono - Open Source Telephony -Denis Kenzior"),
-	        new PossibleAnswer("8", "-|Agile Developer Practices for Dynamic Languages -Paul King|There's something on my ARM: Chromium and the Beagleboard -Joel Stanley")
+	        new PossibleAnswer("0", "aaa|xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "9:00 - 10:00|Keynote| | "),
+	        new PossibleAnswer("2", "10:00 - 10:30|Taking Groovy and Grails Further into the Enterprise (30 mins) -Bob Brown|How to get Rails web applications accepted in industry (30 mins) -Harley Mackenzie|Intelligent Web Questionaires - A Rules Based Approach (30 mins) -Ross Hall"),
+	        new PossibleAnswer("3", "10:30 - 11:00|morning tea| | "),
+	        new PossibleAnswer("4", "11:00 - 12:00|Open Source Web Apps in Azure (60 mins) -Jorke Odolphi|Towards Complete Code Coverage (60 mins) -Clinton Roy|Writing Domain Specific Languages (DSLs) using Groovy (60 mins) -Paul King"),
+	        new PossibleAnswer("5", "12:00 - 12:30|The Bitten Continuous Integration Service (30 mins) -Clinton Roy|Using Groovy for Testing (30 mins) -Paul King|ExtJS + OpenLayers mapping (30 mins) -Scott Penrose"),
+	        new PossibleAnswer("6", "12:30 - 1:30|lunch| | "),
+	        new PossibleAnswer("7", "1:30 - 2:00|Not another damn password! It's the 21st Century after all (30 mins) -Daniel Black|Desktop Applications for the Web (30 mins) - Ben Balbo|Complex Event Processing (real time even stream processing) for fun and profit (30 mins) -Michael Neale"),
+	        new PossibleAnswer("8", "2:00 - 2:30|Relax! A Failure is NOT an Emergency. (30 mins) -Arjen Lentz|SELinux for Programmers (30 mins) -Paul Wayper|On Scala (or: Static Typing Doesn't Have To Suck) (30 mins) -Thomas Lee"),
+	        new PossibleAnswer("9", "2:30 - 3:00|Business, Law, Open Source (30 mins) -Brendan Scott|TsPyC: Making compiler semantics scriptable (30 mins) -Joshua Bartlett|GIT me up (30 mins) -Nigel Rausch"),
+	        new PossibleAnswer("10", "3:00 - 3:30|afternoon tea| | "),
+	        new PossibleAnswer("11", "3:30 - 5:00|lightning talks| | "),
+	        new PossibleAnswer("12", "5:00 - 6:00|break| | "),
+	        new PossibleAnswer("13", "6:00 - midnight|conference dinner| | ")
 	});
 	insertLogical(question);
 end
@@ -97,16 +102,22 @@ when
 then
 	MultipleChoiceQuestion question = new MultipleChoiceQuestion();
 	question.setId("select-session-day-3");
-	question.setPreLabel("Session 1|Session 2|Session 3|Select session");
+	question.setPreLabel("Time|Session 1|Session 2|Session 3");
 	question.setAnswerType(Question.TYPE_TEXT);
 	question.setPresentationStyles({"left", "table"});
 	question.setPossibleAnswers({
-	        new PossibleAnswer("0", "xxx|yyy|zzz"),
-	        new PossibleAnswer("1", "Cultivating Codeless Contributors -Melissa Draper|Experiences from Agile Projects Great & Small -Craig Smith|Captain Abdul's Guide to PL/PirateSQL -Andrew McMillan"),
-	        new PossibleAnswer("2", "Building an Open Source community -Ryan Cross|Adding code coverage metrics and unit tests to a mature application -Tennessee Leeuwenburg|Change Bad! - Change in database schemas and source code -Andy Todd"),
-	        new PossibleAnswer("3", "Remote Controlled Volunteers -Karen Pauley|How The Internet Really Works -Julien Goodwin|Multi-Master MySQL, effective why and how -Arjen Lentz"),
-	        new PossibleAnswer("4", "Maintaining a community based music website with open source software -Andrew Goodwin|Challenges for multi-lingual systems with OSS tools -David Jorm|Writeable CTEs: The Next Big Thing -David Fetter"),
-	        new PossibleAnswer("5", "Just Get the Job Done! Serving the Community One Argument at a Time. -Jacinta Richardson|-|Data Migration In An Agile Open Source World -Craig Smith")
+	        new PossibleAnswer("0", "aaa|xxx|yyy|zzz"),
+	        new PossibleAnswer("1", "9:30 - 10:30|Keynote| | "),
+	        new PossibleAnswer("2", "10:30 - 11:00|morning tea| | "),
+	        new PossibleAnswer("3", "11:00 - 12:00|Experiences from Agile Projects Great & Small (60 mins) -Craig Smith|Captain Abdul's Guide to PL/PirateSQL (60 mins) -Andrew McMillan|\"Change Bad!\" - Change in database schemas and source code (60 mins) -Andy Todd"),
+	        new PossibleAnswer("4", "12:00 - 12:30|There's something on my ARM: Chromium and the Beagleboard (30 mins) -Joel Stanley|How The Internet Really Works (30 mins) -Julien Goodwin|Multi-Master MySQL, effective why and how (30 mins) -Arjen Lentz"),
+	        new PossibleAnswer("5", "12:30 - 1:30|lunch| | "),
+	        new PossibleAnswer("6", "1:30 - 2:00|Maintaining a community based music website with open source software (30 mins) -Andrew Goodwin|Challenges for multi-lingual systems with OSS tools (30 mins) -David Jorm|Writeable CTEs: The Next Big Thing (30 mins) -David Fetter"),
+	        new PossibleAnswer("7", "2:00 - 2:30|Just Get the Job Done! Serving the Community One Argument at a Time. (30 mins) -Jacinta Richardson|Data Migration In An Agile Open Source World (30 mins)-Craig Smith|Deadly Sins Using MySQL & PHP -Arjen Lentz"),
+	        new PossibleAnswer("8", "2:30 - 3:00|Cultivating Codeless Contributors (30 mins) -Melissa Draper|Building an Open Source community (30 mins) -Ryan Cross|Adding code coverage metrics and unit tests to a mature application (30 mins) - Tennessee Leeuwenburg"),
+	        new PossibleAnswer("9", "3:00 - 3:30|afternoon tea| | "),
+	        new PossibleAnswer("10", "3:30 - 4:30|lightning talks| | "),
+	        new PossibleAnswer("11", "4:30 - 5:00|conference close| | ")
 	});
 	insertLogical(question);
 end

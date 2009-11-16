@@ -26,6 +26,6 @@
 .table .header,
 .table .cell {
  	display: inline-block;
- 	width : 33%;
+ 	width : 25%;
  	vertical-align:middle;
 }

@@ -65,8 +65,9 @@ then
 	note.setLabel("The major domain entities are:" +
 		"<UL>" +
 			"<LI>Questionaire" +
-			"<LI>Question" +
-			"<LI>Multi-Choice Question" +
+			"<LI>Groups" +
+			"<LI>Questions" +
+			"<LI>Multi-Choice Questions" +
 			"<LI>Notes" +
 			"<LI>Answers" +
 			"<LI>Invalid Answers" +

@@ -221,7 +221,7 @@ then
 		"to defining interactive questionnaire style applications with a domain specific model." + 
 		"<p>JavaScript within the browser interprets this model and renders the UI.</p>" +
 		"<p>Initial version targeted at interactive web applications, however technology independent and could be used in B2B scenarios, mobile devices, etc</p>" +
-		"<p>Tohu is not a UI framework and is designed to complement and work within existing frameworks such as Seam/JSF/Spring MV</p>"
+		"<p>Tohu is not a UI framework and is designed to complement and work within existing frameworks such as Seam/JSF/Spring MV/Grails/Rails</p>"
 	);
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
