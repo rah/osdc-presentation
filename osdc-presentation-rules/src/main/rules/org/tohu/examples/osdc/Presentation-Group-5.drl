@@ -29,7 +29,7 @@ then
 	Note note = new Note();
 	note.setId("get-it-note");
 	note.setLabel("<p>How to get it ... <a href=\"http://www.jboss.org/tohu\">Tohu JBoss Site</a> (www.jboss.org/tohu)</p>" + 
-		"<p>This presentation can be downloaded from <a href=\"http://github.com/rah\">My Github Repos</a> (github.com/rah)</p>");
+		"<p>This presentation can be downloaded from <a href=\"http://github.com/rah\">Github</a> (github.com/rah)</p>");
 	note.setPresentationStyles({"expandedTip"});
 	insertLogical(note);	
 end	

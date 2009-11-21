@@ -18,6 +18,8 @@ import org.tohu.Note;
 
 rule "Presentation Questionaire"
 dialect "mvel"
+when
+	# There are no conditions here, always true
 then
 	Questionnaire questionnaire = new Questionnaire();
 	questionnaire.setId("DAPresentation");
@@ -132,7 +134,7 @@ then
 end
 
 ##############################################################################
-# Active page tile and progress definitions
+# Active page title and progress definitions
 ##############################################################################
 
 rule "Active - Overview"

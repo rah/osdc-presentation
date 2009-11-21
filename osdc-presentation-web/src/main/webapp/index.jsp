@@ -27,11 +27,10 @@
 		<form>
 			<input type="button" value="Reset" onclick="resetDrools()" />
 		</form>
-    	<a href="nostyles.jsp">Without CSS</a> </div>
+  </div>
   <div id="rightSideBar">
     <div class="innerPadding"> 
     <h3 id="actualTitle">&nbsp;</h3>
-<!--    <img src="images/drools-logo.png" height="100" width="200" id="side-logo">-->
     <img src="images/tohu_logo_200px.gif" id="side-logo">
         <div id="progressindicator" class="clearfix">
         	&nbsp;
